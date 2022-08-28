@@ -7,13 +7,19 @@ from organization.models import Organization
 from django.utils import timezone
 
 
+class InventoryUnit(models.Model):
+    InventoryUnit = models.CharField(max_length=36, unique=True, primary_key=True, default=uuid.uuid4)
+    name = models.CharField(max_length=500, default="")
+    description = models.TextField(default="")
+
+
 class InventoryModel(models.Model):
     inventory_id = models.CharField(max_length=36, unique=True, primary_key=True, default=uuid.uuid4)
     organization = models.ForeignKey(Organization, on_delete=models.DO_NOTHING, null=True)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True)
     name = models.CharField(max_length=500, default="")
     description = models.TextField(default="")
-    unit = models.CharField(default="piece",max_length=50)
+    unit = models.ForeignKey(InventoryUnit, on_delete=models.DO_NOTHING, null=True)
     created = models.DateTimeField(default=timezone.now)
 
 

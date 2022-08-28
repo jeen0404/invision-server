@@ -1,11 +1,8 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
-
 from accounts.models import User
-from accounts.serializers import ProfileSerializer
 from inventory.models import InventoryModel
 from organization.models import Organization
-from organization.serializers import OrganizationSerializer
 
 
 class InventoryModelSerializer(ModelSerializer):

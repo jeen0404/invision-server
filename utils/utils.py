@@ -45,8 +45,6 @@ def user_detail(user: User):
         "token": token,
     }
     if user:
-        print(user)
-        print(type(user))
         user_json.update({'user_details': ProfileSerializer(instance=user).data})
     return user_json
 
