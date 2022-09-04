@@ -57,9 +57,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     username_regex = RegexValidator(regex=r'^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$',
                                     message='only digits and numbers allowed.', )
-    username = models.CharField( validators=[username_regex], max_length=50, default="")
-    name = models.CharField(max_length=200,default="")
-    title = models.CharField(max_length=200,default="")
+    username = models.CharField(validators=[username_regex], max_length=50, default="")
+    name = models.CharField(max_length=200, default="")
+    title = models.CharField(max_length=200, default="")
     profile_image = models.TextField(default='')
 
     def __str__(self):  # __unicode__ on Python 2
@@ -99,7 +99,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     @property
     def is_staff(self):
-        return True
+        return self.phone_number == "8504041569"
 
     @property
     def is_active(self):
@@ -114,7 +114,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 # Phone Token authentication
 class PhoneToken(models.Model):
-    token_id = models.CharField(max_length=36, unique=True, primary_key=True,default=uuid.uuid4)
+    token_id = models.CharField(max_length=36, unique=True, primary_key=True, default=uuid.uuid4)
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,14}$',
                                  message='Phone no must be in the format of +99999999. 14 digit allowed')
     phone_number = models.CharField(validators=[phone_regex], max_length=15)
