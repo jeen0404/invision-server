@@ -16,5 +16,7 @@ class Inventory(generics.ListAPIView):
     serializer_class = InventoryModelSerializer
 
     def get_queryset(self):
-        post_id = self.request.user.organization_id
-        return InventoryModel.objects.filter(organization=post_id)
+        print("---------");
+        organization_id = self.request.user.organization_id
+        print(organization_id)
+        return InventoryModel.objects.filter(organization=organization_id)

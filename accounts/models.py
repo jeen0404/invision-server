@@ -63,7 +63,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     profile_image = models.TextField(default='')
 
     def __str__(self):  # __unicode__ on Python 2
-        return self.user_id
+        return self.phone_number
 
     def get_username(self):
         return self.phone_number

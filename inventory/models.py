@@ -12,6 +12,9 @@ class InventoryUnit(models.Model):
     name = models.CharField(max_length=500, default="")
     description = models.TextField(default="")
 
+    def __str__(self):
+        return "{} - {}".format(self.name, self.description)
+
 
 class InventoryModel(models.Model):
     inventory_id = models.CharField(max_length=36, unique=True, primary_key=True, default=uuid.uuid4)
@@ -21,6 +24,9 @@ class InventoryModel(models.Model):
     description = models.TextField(default="")
     unit = models.ForeignKey(InventoryUnit, on_delete=models.DO_NOTHING, null=True)
     created = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return "{} - {} - {}".format(self.name, self.organization, self.unit)
 
 
 class InventoryChangeModel(models.Model):
@@ -32,3 +38,6 @@ class InventoryChangeModel(models.Model):
     price_per_unit = models.FloatField(default=0.0)
     quantity = models.FloatField(default=0.0)
     deleted = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "{} - {} - {}".format(self.inventory, self.user, self.organization,self.quantity)

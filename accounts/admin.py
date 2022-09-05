@@ -5,7 +5,7 @@ from accounts.models import User, PhoneToken
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('user_id', 'phone_number', 'username')
+    list_display = ('phone_number', 'username')
     search_fields = ('phone_number',)
     list_filter = ('phone_number',)
     readonly_fields = ('phone_number', 'username',)
