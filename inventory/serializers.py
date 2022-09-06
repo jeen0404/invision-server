@@ -6,9 +6,10 @@ from organization.models import Organization
 
 
 class InventoryModelSerializer(ModelSerializer):
-    organization = serializers.PrimaryKeyRelatedField(allow_null=True, source="organization.organization_id",
+    organization = serializers.PrimaryKeyRelatedField(allow_null=True, source="organization.name",
                                                       queryset=Organization.objects.all())
-    user = serializers.PrimaryKeyRelatedField(allow_null=True, source="user.user_id", queryset=User.objects.all())
+    user = serializers.PrimaryKeyRelatedField(allow_null=True, source="user.phone_number", queryset=User.objects.all())
+    unit = serializers.PrimaryKeyRelatedField(allow_null=True, source="unit.name", queryset=User.objects.all())
 
     class Meta:
         model = InventoryModel
