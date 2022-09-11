@@ -51,7 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     suspended = models.BooleanField(default=False)
     disabled = models.BooleanField(default=False)
 
-    organization_id = models.ForeignKey(Organization, on_delete=models.DO_NOTHING, null=True)
+    organization = models.ForeignKey(Organization, on_delete=models.DO_NOTHING, null=True)
     USERNAME_FIELD = 'phone_number'
     objects = UserManager()
 
@@ -72,8 +72,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.name
 
     def get_organization(self):
-        organization_id = self.organization_id
-        return self.organization_id
+        organization_id = self.organization
+        return self.organization
 
     def has_perm(self, perm, obj=None):
         """Does the user have a specific permission?"""

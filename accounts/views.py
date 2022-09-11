@@ -113,7 +113,7 @@ class AddUserDetailsView(CreateAPIView):
             user.username = request.data.get('username')
             user.name = request.data.get('name')
             profile_image = request.data.get('profile_image')
-            profile_image.name = request.user.user_id + '.' + profile_image.name.split('.')[-1]
+            profile_image.name = request.created_by.user_id + '.' + profile_image.name.split('.')[-1]
             user.profile_image = profile_image
             user.save()
             return Response(True, status=status.HTTP_200_OK)
@@ -141,7 +141,7 @@ class Profile(generics.CreateAPIView):
     serializer_class = ProfileSerializer
 
     def get(self, request):
-        data = User.objects.get(user=request.user)
+        data = User.objects.get(user=request.created_by)
         data = self.serializer_class(instance=data).data
         return Response(data)
 

@@ -46,8 +46,8 @@ class AddDetailsSerializer(ModelSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    organization_id = OrganizationSerializer(allow_null=True, read_only=True)
+    organization = OrganizationSerializer(allow_null=True, read_only=True)
 
     class Meta:
         model = User
-        fields = ('user_id', 'phone_number', 'username', 'name', 'profile_image', 'organization_id')
+        fields = ('user_id', 'phone_number', 'username', 'name', 'profile_image', 'organization')

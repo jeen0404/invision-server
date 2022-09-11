@@ -20,4 +20,5 @@ urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
     re_path(r'^auth/', include('accounts.urls', namespace='authentication'), ),
     re_path(r'^inventory/', include('inventory.urls', namespace='inventory'), ),
+    re_path(r'^organization/', include('organization.urls', namespace='organization'), ),
 ]
