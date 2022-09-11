@@ -52,7 +52,6 @@ class GenerateOTP(CreateAPIView):
             {'reason': ser.errors}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 
-
 class ValidateOTP(CreateAPIView):
     """ validate otp """
     queryset = PhoneToken.objects.all()
