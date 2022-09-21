@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'accounts',
     'organization',
     'inventory',
-    'corsheaders'
+    'website',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +62,7 @@ ROOT_URLCONF = 'invision_server.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['static', 'web'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
